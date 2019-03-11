@@ -25,44 +25,60 @@ class Hora extends Component {
     }
 }
 
-function RelojDigital(props) {
-    return (
-        <div className='RelojDigital'>
-            <div className='Timezone'>{props.name}</div>
-            <Fecha fecha={props.fecha}/>
-            <Hora hora={props.hora}/>
-        </div>
-    );
+function calculateDate(country, timeZone) {
+    const fechaCompleta = new Date();
+    const fecha = fechaCompleta.toLocaleDateString(country, {timeZone: timeZone});
+    const hora = fechaCompleta.toLocaleTimeString(country, {timeZone: timeZone});
+    return {fecha, hora};
+}
+
+class RelojDigital extends Component {
+    constructor(props) {
+        super(props);
+        // Establecemos el state del componente
+        this.state = calculateDate(this.props.country, this.props.timeZone);
+    }
+
+    componentDidMount() {
+        this.intervalId = setInterval(
+            () => this.setState(calculateDate(this.props.country, this.props.timeZone))
+        );
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.intervalId);
+    }
+    
+    
+    render() {
+        return (
+            <div className='RelojDigital'>
+                <div className='Timezone'>{this.props.name}</div>
+                <Fecha fecha={this.state.fecha}/>
+                <Hora hora={this.state.hora}/>
+            </div>
+        );
+    }
 }
 
 function Almanaque(props) {
-    const fechaCompleta = new Date();
-    const fecha = fechaCompleta.toLocaleDateString();
-    const hora = fechaCompleta.toLocaleTimeString();
-
-    const fechaNY = fechaCompleta.toLocaleDateString("en-US", {timeZone: "America/New_York"});
-    const horaNY = fechaCompleta.toLocaleTimeString("en-US", {timeZone: "America/New_York"});
-
     return (
         <div className='Almanaque'>
             <RelojDigital
                 name='Murcia'
-                fecha={fecha}
-                hora={hora}/>
+                country='es-ES'
+                timeZone='Europe/Madrid'/>
             <RelojDigital
                 name='New York'
-                fecha={fechaNY}
-                hora={horaNY}/>
+                country='en-US'
+                timeZone='America/New_York'/>
+            <RelojDigital
+                name='Tazmania'
+                country='au-AU'
+                timeZone='Australia/Hobart'/>
         </div>
     );
 }
-
-// class Welcome extends Component {
-//     // this.props contiene {name: 'Juanjo'}
-//     render() {
-//         return <div>Welcome {this.props.name} to ReactJS!</div>;
-//     }
-// }
 
 // Componente tipo Clase
 class App extends Component {
@@ -71,6 +87,7 @@ class App extends Component {
             <div className='App'>
                 <Welcome
                     name='Juanjo'/>
+                <Almanaque/>
             </div>
         );
     }
