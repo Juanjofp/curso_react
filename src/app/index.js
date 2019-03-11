@@ -2,16 +2,20 @@
 import React, { Component } from 'react';
 import './styles.css';
 
-function formatName(user) {
-    return <p>{user.name + ' ' + user.lastname}</p>
-}
 class App extends Component {
+
     render() {
-        const user = {name: 'Juanjo', lastname: 'Franco'}
-        const message = <span>Hello {formatName(user)}</span>
+        const count = parseInt(Date.now() / 1000);
+        if(count % 2 === 0) {
+            return (
+                <div className="App">
+                Soy un numero par {count}
+                </div>
+            );
+        }
         return (
             <div className="App">
-                {message}
+                Soy un numero impar {count}
             </div>
         );
     }
