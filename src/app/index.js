@@ -1,6 +1,6 @@
 // src/app/index.js
 import React, { Component } from 'react';
-//import Almanaque from '../almanaque';
+import Almanaque from '../almanaque';
 //import GPS from '../gps';
 //import GitHub from '../github';
 //import CountDown from '../countdown';
@@ -22,6 +22,14 @@ class App extends Component {
             <div className='App'>
                 <Welcome
                     name='Juanjo'/>
+                <Almanaque
+                    timezones={[
+                        {name: 'Murcia', country:'es-ES', timeZone:'Europe/Madrid'},
+                        {name: 'Nueva York', country:'en-US', timeZone:'America/New_York'},
+                        {name: 'Tazmania', country:'au-AU', timeZone:'Australia/Hobart'},
+                        {name: 'Londres', country:'en-EN', timeZone:'Europe/London'},
+                        {name: 'Shanghai', country:'as-AS', timeZone:'Asia/Shanghai'},
+                    ]}/>
             </div>
         );
     }

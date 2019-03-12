@@ -53,20 +53,19 @@ class RelojDigital extends Component {
 }
 
 function Almanaque(props) {
+    const Relojes = props.timezones.map(
+        (tz) => (
+            <RelojDigital
+                key={tz.name}
+                name={tz.name}
+                country={tz.coutry}
+                timeZone={tz.timeZone}
+            />
+        )
+    );
     return (
         <div className='Almanaque'>
-            <RelojDigital
-                name='Murcia'
-                country='es-ES'
-                timeZone='Europe/Madrid'/>
-            <RelojDigital
-                name='New York'
-                country='en-US'
-                timeZone='America/New_York'/>
-            <RelojDigital
-                name='Tazmania'
-                country='au-AU'
-                timeZone='Australia/Hobart'/>
+        {Relojes}
         </div>
     );
 }
