@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 //import Almanaque from '../almanaque';
 //import GPS from '../gps';
-import GitHub from '../github';
+//import GitHub from '../github';
+import CountDown from '../countdown';
 import './styles.css';
 
 // Componente tipo función
@@ -20,7 +21,7 @@ class App extends Component {
             <div className='App'>
                 <Welcome
                     name='Juanjo'/>
-                <GitHub username='juanjofp'/>
+                <CountDown/>
             </div>
         );
     }
