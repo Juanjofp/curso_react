@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export class CicloVida extends Component {
+export class Loading extends Component {
     constructor(props) {
         super(props);
         console.log('Soy el Constructor');
@@ -25,4 +25,4 @@ export class CicloVida extends Component {
     }
 }
 
-export default CicloVida;
+export default Loading;
