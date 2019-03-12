@@ -1,6 +1,8 @@
 // src/app/index.js
 import React, { Component } from 'react';
-import Almanaque from '../almanaque';
+//import Almanaque from '../almanaque';
+//import GPS from '../gps';
+import GitHub from '../github';
 import './styles.css';
 
 // Componente tipo función
@@ -18,7 +20,6 @@ class App extends Component {
             <div className='App'>
                 <Welcome
                     name='Juanjo'/>
-                <Almanaque/>
             </div>
         );
     }
