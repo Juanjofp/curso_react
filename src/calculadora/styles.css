@@ -1,0 +1,19 @@
+.Calculadora {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.Display {
+    display: flex;
+    border: 2px solid black;
+    width: 95px;
+    color: white;
+    background-color: black;
+    justify-content: flex-end;
+}
+.Botonera {
+    background-color: black;
+    padding: 4px;
+    border-top: 2px solid magenta;
+}
