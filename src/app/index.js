@@ -5,7 +5,8 @@ import React, { Component } from 'react';
 //import GitHub from '../github';
 //import CountDown from '../countdown';
 //import Calculadora from '../calculadora';
-import Agenda from '../agenda';
+//import Agenda from '../agenda';
+import Reservations from '../formularios/reservas';
 import './styles.css';
 
 // Componente tipo función
@@ -16,17 +17,6 @@ function Welcome(props){
     );
 }
 
-/*
-<Almanaque
-    timezones={[
-        {name: 'Murcia', country:'es-ES', timeZone:'Europe/Madrid'},
-        {name: 'Nueva York', country:'en-US', timeZone:'America/New_York'},
-        {name: 'Tazmania', country:'au-AU', timeZone:'Australia/Hobart'},
-        {name: 'Londres', country:'en-EN', timeZone:'Europe/London'},
-        {name: 'Shanghai', country:'as-AS', timeZone:'Asia/Shanghai'},
-    ]}/>
-*/
-
 // Componente tipo Clase
 class App extends Component {
     render() {
@@ -34,7 +24,7 @@ class App extends Component {
             <div className='App'>
                 <Welcome
                     name='Juanjo'/>
-                <Agenda/>
+                <Reservations/>
             </div>
         );
     }

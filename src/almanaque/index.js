@@ -71,3 +71,14 @@ function Almanaque(props) {
 }
 
 export default Almanaque;
+
+/*
+<Almanaque
+    timezones={[
+        {name: 'Murcia', country:'es-ES', timeZone:'Europe/Madrid'},
+        {name: 'Nueva York', country:'en-US', timeZone:'America/New_York'},
+        {name: 'Tazmania', country:'au-AU', timeZone:'Australia/Hobart'},
+        {name: 'Londres', country:'en-EN', timeZone:'Europe/London'},
+        {name: 'Shanghai', country:'as-AS', timeZone:'Asia/Shanghai'},
+    ]}/>
+*/
