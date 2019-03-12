@@ -6,7 +6,8 @@ import React, { Component } from 'react';
 //import CountDown from '../countdown';
 //import Calculadora from '../calculadora';
 //import Agenda from '../agenda';
-import Reservations from '../formularios/reservas';
+//import Reservations from '../formularios/reservas';
+import Temperatura from '../temperature';
 import './styles.css';
 
 // Componente tipo función
@@ -24,7 +25,7 @@ class App extends Component {
             <div className='App'>
                 <Welcome
                     name='Juanjo'/>
-                <Reservations/>
+                <Temperatura/>
             </div>
         );
     }
