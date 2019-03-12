@@ -40,6 +40,10 @@ export class GPS extends Component {
     }
     
     render() {
+        if(!!this.state.error) {
+            return <div>{this.state.error}</div>
+        }
+        
         return (
             <div className='GPS'>
                 <div>Latitude: {this.state.latitude}</div>
