@@ -20,6 +20,7 @@ class App extends Component {
             <div className='App'>
                 <Welcome
                     name='Juanjo'/>
+                <GitHub username='juanjofp'/>
             </div>
         );
     }

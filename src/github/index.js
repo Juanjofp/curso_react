@@ -14,6 +14,7 @@ export class GitHub extends Component {
         super(props);
 
         this.state = {
+            search: this.props.username,
             login: '',
             avatar_url: '',
             name: '',
@@ -23,10 +24,12 @@ export class GitHub extends Component {
             followers: 0,
             following: 0
         };
+
+        this.getNewUser = this.getNewUser.bind(this);
     }
 
-    componentDidMount() {
-        getUserdata(this.props.username)
+    getNewUser() {
+        getUserdata(this.state.search)
             .then(
                 (user) => {
                     console.log('Response', user);
@@ -42,12 +45,26 @@ export class GitHub extends Component {
                     });
                 }
             );
+    };
+
+    componentDidMount() {
+        this.getNewUser();
+    }
+
+    handleRequest() {
+
     }
     
-
     render() {
         return (
             <div>
+                <div>
+                    <label>
+                        Usuario de GitHub
+                        <input type='text' onChange={(e) => this.setState({search: e.target.value})} value={this.state.search}/>
+                        <button onClick={this.getNewUser}>Buscar</button>
+                    </label>
+                </div>
                 <div>{this.state.login}</div>
                 <div><img src={this.state.avatar_url} alt='Avatar del usuario' width='100px' height='100px'/></div>
                 <div>{this.state.name}, {this.state.company}</div>
