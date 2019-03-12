@@ -6,8 +6,12 @@
 }
 .Display {
     display: flex;
+    align-items: center;
     border: 2px solid black;
-    width: 95px;
+    width: 288px;
+    height: 36px;
+    font-size: 26px;
+    padding: 2px;
     color: white;
     background-color: black;
     justify-content: flex-end;
@@ -16,4 +20,19 @@
     background-color: black;
     padding: 4px;
     border-top: 2px solid magenta;
+}
+.Boton {
+    width: 72px;
+    height: 72px;
+    font-size: 22px;
+}
+.Operacion {
+    width: 72px;
+    height: 72px;
+    font-size: 22px;
+}
+.ErrorMessage {
+    color: red;
+    font-size: 22px;
+    font-weight: 400;
 }

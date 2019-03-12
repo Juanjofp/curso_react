@@ -5,7 +5,8 @@ const INITAL_STATE = {
     resultado: 0,
     operando1: undefined,
     operando2: undefined,
-    operacion: undefined
+    operacion: undefined,
+    error: false
 };
 export class Calculadora extends Component {
     constructor(props) {
@@ -19,12 +20,12 @@ export class Calculadora extends Component {
         if(!this.state.operacion) {
             if(this.state.operando1 >= 9999) return ;
             const op1 = Number((this.state.operando1 || '') + '' + value);
-            this.setState({operando1: op1, resultado: op1});
+            this.setState({operando1: op1, resultado: op1, error: false});
         }
         else {
             if(this.state.operando2 > 9999) return ;
             const op2 = Number((this.state.operando2 || '') + '' + value);
-            this.setState({operando2: op2, resultado: op2});
+            this.setState({operando2: op2, resultado: op2, error: false});
         }
     }
 
@@ -38,7 +39,7 @@ export class Calculadora extends Component {
     }
 
     calculateResult() {
-        if(this.state.operando1 && this.state.operando2) {
+        if(this.state.operando1 && this.state.operando2 !== undefined) {
             let result = {...INITAL_STATE};
             switch(this.state.operacion){
                 case '+':
@@ -51,7 +52,12 @@ export class Calculadora extends Component {
                     result.resultado = this.state.operando1 * this.state.operando2;
                     break;
                 case '/':
-                    result.resultado = this.state.operando1 / this.state.operando2;
+                    if(this.state.operando2 === 0) {
+                        result.error = true;
+                    }
+                    else {
+                        result.resultado = this.state.operando1 / this.state.operando2;
+                    }
                     break;
                 default:
                     result.resultado = 0;
@@ -70,21 +76,21 @@ export class Calculadora extends Component {
                 </div>
                 <div className='Botonera'>
                     <div className='Linea'>
-                        <button className='Boton' onClick={this.sendOperator.bind(this, 9)}>9</button>
-                        <button className='Boton' onClick={this.sendOperator.bind(this, 8)}>8</button>
                         <button className='Boton' onClick={this.sendOperator.bind(this, 7)}>7</button>
+                        <button className='Boton' onClick={this.sendOperator.bind(this, 8)}>8</button>
+                        <button className='Boton' onClick={this.sendOperator.bind(this, 9)}>9</button>
                         <button className='Operacion' onClick={this.sendOperation.bind(this, '+')}>+</button>
                     </div>
                     <div className='Linea'>
-                        <button className='Boton' onClick={this.sendOperator.bind(this, 6)}>6</button>
-                        <button className='Boton' onClick={this.sendOperator.bind(this, 5)}>5</button>
                         <button className='Boton' onClick={this.sendOperator.bind(this, 4)}>4</button>
+                        <button className='Boton' onClick={this.sendOperator.bind(this, 5)}>5</button>
+                        <button className='Boton' onClick={this.sendOperator.bind(this, 6)}>6</button>
                         <button className='Operacion' onClick={this.sendOperation.bind(this, '-')}>-</button>
                     </div>
                     <div className='Linea'>
-                        <button className='Boton' onClick={this.sendOperator.bind(this, 3)}>3</button>
-                        <button className='Boton' onClick={this.sendOperator.bind(this, 2)}>2</button>
                         <button className='Boton' onClick={this.sendOperator.bind(this, 1)}>1</button>
+                        <button className='Boton' onClick={this.sendOperator.bind(this, 2)}>2</button>
+                        <button className='Boton' onClick={this.sendOperator.bind(this, 3)}>3</button>
                         <button className='Operacion' onClick={this.sendOperation.bind(this, '*')}>*</button>
                     </div>
                     <div className='Linea'>
@@ -94,6 +100,9 @@ export class Calculadora extends Component {
                         <button className='Operacion' onClick={this.sendOperation.bind(this, '/')}>/</button>
                     </div>
                 </div>
+                {
+                    this.state.error && <div className='ErrorMessage'>La división por cero es imposible!</div>
+                }
             </div>
         );
     }
