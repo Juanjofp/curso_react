@@ -1,5 +1,6 @@
 // src/app/index.js
 import React, { Component } from 'react';
+import Padre from '../padre';
 import './styles.css';
 
 // Componente tipo función
@@ -66,11 +67,17 @@ function Almanaque(props) {
 
 // Componente tipo Clase
 class App extends Component {
+    hablaAlAbuelo(msgFromChildren) {
+        console.log('Mensaje del hijo', msgFromChildren);
+    }
     render() {
         return (
             <div className='App'>
                 <Welcome
                     name='Juanjo'/>
+                <Padre hablaAlAbuelo={this.hablaAlAbuelo}>
+                    <div>Soy el Hijo</div>
+                </Padre>
             </div>
         );
     }
