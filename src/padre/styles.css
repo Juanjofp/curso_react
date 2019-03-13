@@ -1,0 +1,9 @@
+.Padre {
+    margin: 16px;
+    border: 2px solid red;
+}
+
+.Hijo {
+    margin: 8px;
+    border: 2px solid green;
+}
